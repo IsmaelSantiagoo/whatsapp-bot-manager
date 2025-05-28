@@ -1,8 +1,8 @@
 import { redirect } from "next/navigation";
-import { LayoutProps } from "@/interfaces/LayoutProps";
+import { ReactNode } from "react";
 import { getServerCookie } from "@/lib/server-utils";
 
-const Layout = async ({ children }: LayoutProps) => {
+export default async function Layout({ children }: { children: ReactNode }) {
   const token = await getServerCookie("session_token");
 
   if (token) {
@@ -10,6 +10,4 @@ const Layout = async ({ children }: LayoutProps) => {
   }
 
   return children;
-};
-
-export default Layout;
+}
