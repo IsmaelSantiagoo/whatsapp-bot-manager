@@ -1,7 +1,6 @@
 "use client";
-import { useCallback, useEffect, useState } from "react";
+import { ReactNode, useCallback, useEffect, useState } from "react";
 import { ApiResponse } from "@/interfaces/ApiResponse";
-import { LayoutProps } from "@/interfaces/LayoutProps";
 import { Menu } from "@/interfaces/Menu";
 import { axios } from "@/lib/axios";
 
@@ -13,7 +12,7 @@ import WASocket from "@/interfaces/WASocket";
 
 type MenusResponse = ApiResponse<Menu[]>;
 
-export const ApplicationProvider = ({ children }: LayoutProps) => {
+export const ApplicationProvider = ({ children }: { children: ReactNode }) => {
   const [menus, setMenus] = useState<Menu[]>([]);
   const [socket, setSocket] = useState<Socket | null>(null);
   const [errorDialogOpen, setErrorDialogOpen] = useState(false);

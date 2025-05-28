@@ -2,12 +2,12 @@ import { redirect } from "next/navigation";
 
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
 import { ApplicationProvider } from "@/context/application/provider";
-import { LayoutProps } from "@/interfaces/LayoutProps";
 import { getServerCookie } from "@/lib/server-utils";
 import { AppHeader } from "./_components/header.component";
 import { AppSidebar } from "./_components/app-sidebar.component";
+import { ReactNode } from "react";
 
-const Layout = async ({ children }: LayoutProps) => {
+const Layout = async ({ children }: { children: ReactNode }) => {
   const token = await getServerCookie("session_token");
 
   if (!token) {
