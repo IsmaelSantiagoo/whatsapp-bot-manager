@@ -28,7 +28,7 @@ export const LoginForm = async () => {
             <Label htmlFor="senha">Senha:</Label>
 
             <Link
-              href="/auth/forgot-password"
+              href="#"
               className="ml-auto text-sm underline-offset-4 hover:underline"
             >
               Esqueceu sua senha?
