@@ -8,6 +8,9 @@ import { Logo } from "@/components/ui/logo";
 
 import { LoginForm } from "./_components/form-credentials";
 import { GoogleLogin } from "./_components/form-google";
+import { axios } from "@/lib/axios";
+import { ApiResponse } from "@/interfaces/ApiResponse";
+import { Menu } from "@/interfaces/Menu";
 
 type Props = {
   searchParams: Promise<{
@@ -15,8 +18,17 @@ type Props = {
   }>;
 };
 
+type MenusResponse = ApiResponse<Menu[]>;
+
 const Page = async ({ searchParams }: Props) => {
   const { error } = await searchParams;
+  const res = await axios.get<MenusResponse>("/menus");
+
+  if (res.status === 200 && res.data.success) {
+    console.log(res.data)
+  } else {
+    console.error("Erro no fetch de menus")
+  }
 
   return (
     <div className="flex min-h-svh flex-col items-center justify-center gap-6 p-6 md:p-10">
