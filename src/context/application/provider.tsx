@@ -45,7 +45,7 @@ export const ApplicationProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     fetchMenus();
 
-    const socketInstance = io("http://localhost:3001", { path: "/ws" });
+    const socketInstance = io(process.env.NEXT_PUBLIC_API_URL, { path: "/ws" });
     setSocket(socketInstance);
 
     socketInstance.on('connect', () => {
